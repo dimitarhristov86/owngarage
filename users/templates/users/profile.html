@@ -1,0 +1,27 @@
+{% extends 'garage/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle" src="{{ user.profile.image.url }}" style="height: 150px; width: 150px;">
+      <div class="media-body">
+        <h2 class="account0heading">{{ user.username }}</h2>
+        <p class="text-secondary">{{ user.email }}</p>
+      </div>
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Profile Info</legend>
+          {{ u_form|crispy }}
+          {{ p_form|crispy }}
+        </fieldset>
+        <a href="{% url 'password_reset' %}">Change password here</a>
+        <div class="form-group">
+          <button class="btn bnt-outline-info" type="submit">Update</button>
+        </div>
+    </form>
+  </div>
+{% endblock %}

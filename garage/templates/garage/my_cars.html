@@ -1,0 +1,17 @@
+{% extends 'garage/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <a style="color: #4e4f61; font-weight: bold;">{{ user.first_name }} {{ user.last_name }}'s Cars</a>
+        {% for car in cars %}
+            <div class="car-body">
+                <div class="car-data">
+                    <a href="{% url 'car-detail' car.pk %}">{{ car.make }} {{ car.model }}</a>
+                </div>
+                <div class="car-image">
+                    <img  style="height: 250px; width: 400px;" src="{{ car.image.url }}">
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endblock %}

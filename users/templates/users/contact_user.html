@@ -1,0 +1,20 @@
+{% extends 'garage/base.html' %}
+
+{% block content %}
+  <div class="content-section">
+    <div class="media">
+      <img class="rounded-circle" src="{{ user.profile.image.url }}" style="height: 150px; width: 150px;">
+      <div class="user-profile-info">
+        {% if user.profile.facebook_page %}
+          <a href="{{ user.profile.facebook_page }}">Facebook</a>
+        {% endif %}
+        {% if user.profile.instagram_page %}
+          <a href="{{ user.profile.instagram_page }}">Instagram</a>
+        {% else %}
+          <small class="text-alert">{{ user }} has not provided a social media links!</small>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+{% endblock %}

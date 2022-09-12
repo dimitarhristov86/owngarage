@@ -1,0 +1,19 @@
+{% extends 'garage/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-sections">
+      <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Delete car</legend>
+          <h2>Are you sure you want to delete this car "{{ object.make }} {{ object.model }}"?</h2>
+        </fieldset>
+        <div class="form-group">
+          <button class="btn bnt-outline-danger" type="submit" style="background-color:#7a0d0d; color:white;">Yes, Delete</button>
+          <a class="btn bnt-outline-secondary" href="{% url 'car-detail' object.id %}">Cancel</a>
+        </div>
+      </form>
+    </div>
+{% endblock %}

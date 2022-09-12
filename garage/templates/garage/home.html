@@ -1,0 +1,24 @@
+{% extends 'garage/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <a class="text" style="color: #4e4f61; font-size: 20px;">Latest registered cars</a>
+        {% for car in cars %}
+            <div class="cars-body">
+                <a class="car-detail" href="{% url 'car-detail' car.id %}">{{ car.make }} {{ car.model }}</a>
+                <h6>owner: {{ car.owner }}</h6>
+                <div class="cars-metadata">
+                   {% if car.image %}
+                       <img class="img-thumbnail" src="{{ car.image.url }}" style="height: 200px;
+                                    width: 200px;">
+                   {% else %}
+                       <img class="img-thumbnail" src="{% url 'media/no_image.png' %}" style="height: 200px;
+                                    width: 200px;">
+                   {% endif %}
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="img-area"></div>
+    {% endif %}
+{% endblock %}

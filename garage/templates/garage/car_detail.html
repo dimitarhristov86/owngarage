@@ -1,0 +1,44 @@
+{% extends 'garage/base.html' %}
+
+{% block content %}
+            <div class="cars-body">
+                <div class="cars-metadata">
+                   {% if car.image %}
+                       <img class="img-thumbnail" src="{{ object.image.url }}" style="height: 200px;
+                                    width: 200px;">
+                   {% else %}
+                       <img class="img-thumbnail" src="{% url 'media/no_image.png' %}" style="height: 200px;
+                                    width: 200px;">
+                   {% endif %}
+                    <table style="width:100%">
+                        <tr>
+                            <th>Make</th>
+                            <th>Model</th>
+                            <th>Color</th>
+                            <th>Year</th>
+                            <th>Fuel</th>
+                            <th>Added</th>
+                        </tr>
+                        <tr>
+                            <td>{{ object.make }}</td>
+                            <td>{{ object.model }}</td>
+                            <td>{{ object.color }}</td>
+                            <td>{{ object.date_of_production }}</td>
+                            <td>{{ object.fuel }}</td>
+                            <td>{{ object.created|date:"F d, Y" }}</td>
+                        </tr>
+                    </table>
+                </div>
+                {% if object.owner != user %}
+                    <a href="{% url 'contact-user' %}">Contact {{ object.owner }}</a>
+                {% endif %}
+                {% if object.owner == user %}
+                     <div class="update-car-data">
+                         <a class="btn bnt-secondary btn-sm mt-1 mb-1" href="{% url 'car-update' car.pk %}">Update Car Info</a>
+                     </div>
+                     <div class="delete-car">
+                        <a class="btn bnt-danger btn-sm mt-1 mb-1" style="background-color:#7a0d0d; color:white;" href="{% url 'car-delete' car.pk %}">Delete This Car</a>
+                     </div>
+                {% endif %}
+            </div>
+{% endblock %}
