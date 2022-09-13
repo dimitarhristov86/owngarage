@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
-from .models import Profile
 
 
 def register(request):
@@ -32,9 +31,3 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
     return render(request, 'users/profile.html', {'u_form': u_form, 'p_form': p_form})
-
-
-# TODO:fix this since return current user
-def contact_user(request):
-    user_profile = Profile.objects.all()
-    return render(request, 'users/contact_user.html', {'user_profile': user_profile})

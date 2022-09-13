@@ -90,5 +90,3 @@ def contact_us(request):
             submitted = True
     return render(request, 'garage/contact_us.html', {'form': form, 'submitted': submitted})
 
-
-#TODO:contact owner
