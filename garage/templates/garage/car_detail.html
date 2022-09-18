@@ -29,6 +29,9 @@
                         </tr>
                     </table>
                 </div>
+                {% if object.owner != user %}
+                    <a class="contact" href="{% url 'contact-user' object.owner.id %}">Contact {{ object.owner }}</a>
+                {% endif %}
                 {% if object.owner == user %}
                      <div class="update-car-data">
                          <a class="btn bnt-secondary btn-sm mt-1 mb-1" href="{% url 'car-update' car.pk %}">Update Car Info</a>

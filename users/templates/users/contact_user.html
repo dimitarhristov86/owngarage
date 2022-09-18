@@ -1,0 +1,21 @@
+{% extends 'garage/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="content-section">
+    <div class="media">
+        <img class="rounded-circle" src="{{ object.profile.image.url }}" style="height: 180px; width: 180px;">
+        {% if object.profile.facebook_page %}
+          <div class="media-body">
+                  <a href="{{ object.profile.facebook_page}}">Contact me on Facebook</a>
+          </div>
+        {% endif %}
+        {% if object.profile.instagram_page %}
+          <div class="media-body">
+                  <a href="{{ object.profile.instagram_page }}">Contact me on Instagram</a>
+          </div>
+        {% endif %}
+    </div>
+  </div>
+{% endblock %}

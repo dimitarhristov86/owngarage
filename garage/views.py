@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.detail import SingleObjectMixin
+from django.contrib.auth.models import User
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.core.mail import send_mail, get_connection
 from django.contrib import messages
@@ -89,4 +91,21 @@ def contact_us(request):
         if 'submitted' in request.GET:
             submitted = True
     return render(request, 'garage/contact_us.html', {'form': form, 'submitted': submitted})
+
+
+class ContactUser(SingleObjectMixin, ListView):
+    model = User
+    template_name = 'users/contact_user.html'
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object(queryset=User.objects.all())
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['profile'] = self.object
+        return context
+
+
+
 
