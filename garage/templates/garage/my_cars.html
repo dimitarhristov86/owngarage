@@ -2,14 +2,14 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <a style="color: #4e4f61; font-weight: bold;">{{ user.first_name }} {{ user.last_name }}'s Cars</a>
+        <a style="color: #4e4f61; font-weight:bold;">{{ user.first_name }} {{ user.last_name }}'s Cars</a>
         {% for car in cars %}
             <div class="car-body">
-                <div class="car-data">
+                <div class="car-data mt-2">
                     <a href="{% url 'car-detail' car.pk %}">{{ car.make }} {{ car.model }}</a>
                 </div>
-                <div class="car-image">
-                    <img  style="height: 300px; width: 300px;" src="{{ car.image.url }}">
+                <div class="img-thumbnail mt-2">
+                    <img  style="height: 200px; width: 300px;" src="{{ car.image.url }}">
                 </div>
             </div>
         {% endfor %}
