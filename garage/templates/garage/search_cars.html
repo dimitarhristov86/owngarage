@@ -1,0 +1,23 @@
+{% extends 'garage/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-sections">
+      <h1 class="text-center">Search results</h1>
+      <div class="container">
+          {% if user.is_authenticated %}
+          {% for car in cars %}
+                <div class="car-body">
+                    <div class="car-data mt-2">
+                        <a href="{% url 'car-detail' car.pk %}">{{ car.make }} {{ car.model }}</a>
+                    </div>
+                    <div class="img-thumbnail mt-2">
+                        <img  style="height: 200px; width: 300px;" src="{{ car.image.url }}">
+                    </div>
+                </div>
+           {% endfor %}
+          {% endif %}
+      </div>
+    </div>
+{% endblock %}

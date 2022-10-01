@@ -107,5 +107,15 @@ class ContactUser(SingleObjectMixin, ListView):
         return context
 
 
+def search_cars(request):
+    if request.method == "GET":
+        query = request.GET.get('query')
+        if query:
+            cars = Car.objects.filter(make__contains=query)
+            return render(request, 'garage/search_cars.html', {'cars': cars})
+        else:
+            print('No results')
+            return render(request, 'garage/search_cars.html', {})
+
 
 

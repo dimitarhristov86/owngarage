@@ -31,6 +31,11 @@
               <a class="nav-item nav-link" href="{% url 'car-new' %}">Add car</a>
               <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
               <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              <form class="d-flex" method="GET" action="{% url 'search-cars' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" name="query" type="search" placeholder="Search cars" aria-label="Search" style="margin-right:-280px;float:right;">
+                <button class="btn btn-outline-secondary" type="submit" style="margin-left:280px; float:right;">Search</button>
+              </form>
             {% else %}
               <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
               <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>

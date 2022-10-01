@@ -4,17 +4,17 @@
   <div class="content-section">
     <div class="media">
         <img class="img-thumbnail" src="{{ object.profile.image.url }}" style="height: 180px; width: 180px;">
-        <p style="color:#007bff; margin-left:50px;">From: {{ object.profile.city }},{{ object.profile.country }}</p>
-        <p style="color:#007bff; margin-left:-160px; margin-top:40px;">Name: {{ user.first_name }} {{ user.last_name }}</p>
+        <p style="color:#007bff; margin-left:50px;">From: {{ object.profile.city }}, {{ object.profile.country }}</p>
+        <p style="color:#007bff; margin-left:-165px; margin-top:40px;">Name: {{ user.first_name }} {{ user.last_name }}</p>
     </div>
     {% if object.profile.facebook_page %}
       <div class="media-body">
-        <a href="{{ object.profile.facebook_page}}" style="margin-top:-100px; margin-left:-85px; position: absolute;">Contact me on Facebook</a>
+        <a href="{{ object.profile.facebook_page}}" style="margin-top:-100px; margin-left:-82px; position: absolute;">Contact me on Facebook</a>
       </div>
     {% endif %}
     {% if object.profile.instagram_page %}
       <div class="media-body">
-        <a href="{{ object.profile.instagram_page }}" style="margin-top:-60px; margin-left:-85px; position: absolute;">Contact me on Instagram</a>
+        <a href="{{ object.profile.instagram_page }}" style="margin-top:-60px; margin-left:-82px; position: absolute;">Contact me on Instagram</a>
       </div>
     {% endif %}
     <div class="user-data">
