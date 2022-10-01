@@ -7,6 +7,8 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+    country = models.CharField(default='', max_length=50)
+    city = models.CharField(default='', max_length=50)
     facebook_page = models.CharField(max_length=255, null=True, blank=True)
     instagram_page = models.CharField(max_length=255, null=True, blank=True)
 
