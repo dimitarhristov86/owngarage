@@ -10,7 +10,7 @@ from .models import Car
 from .forms import ContactForm
 
 
-class CarListView(LoginRequiredMixin, ListView):
+class CarListView(ListView):
     model = Car
     template_name = 'garage/home.html'
     context_object_name = 'cars'
