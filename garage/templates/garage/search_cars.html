@@ -16,7 +16,9 @@
                         <img  style="height: 200px; width: 300px;" src="{{ car.image.url }}">
                     </div>
                 </div>
-           {% endfor %}
+          {% empty %}
+            <p class="alert-alert" style="color:red;">No results found!</p>
+          {% endfor %}
           {% endif %}
       </div>
     </div>

@@ -31,7 +31,7 @@
                 </div>
                 {% if object.owner != user %}
                     <a class="contact" href="{% url 'contact-user' object.owner.id %}">
-                        Contact {{ object.owner.first_name }} {{ object.owner.last_name }} here</a>
+                        Contact owner here</a>
                 {% endif %}
                 {% if object.owner == user %}
                      <div class="update-car-data">

@@ -10,14 +10,14 @@ from .models import Car
 from .forms import ContactForm
 
 
-class CarListView(ListView):
+class CarListView(LoginRequiredMixin, ListView):
     model = Car
     template_name = 'garage/home.html'
     context_object_name = 'cars'
     ordering = ['-created']
 
 
-class CarDetailView(DetailView):
+class CarDetailView(LoginRequiredMixin, DetailView):
     model = Car
 
 
@@ -93,7 +93,7 @@ def contact_us(request):
     return render(request, 'garage/contact_us.html', {'form': form, 'submitted': submitted})
 
 
-class ContactUser(SingleObjectMixin, ListView):
+class ContactUser(LoginRequiredMixin, SingleObjectMixin, ListView):
     model = User
     template_name = 'users/contact_user.html'
 
