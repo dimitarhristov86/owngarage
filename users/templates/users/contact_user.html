@@ -1,6 +1,7 @@
 {% extends 'garage/base.html' %}
 
 {% block content %}
+  <h1>Contact user</h1>
   <div class="content-section">
     <div class="user-media">
         <img class="img-thumbnail" src="{{ object.profile.image.url }}" style="height: 180px; width: 180px;">
@@ -10,16 +11,16 @@
         <p style="color:#007bff; margin-left:8px; margin-top:-15px;">Name: {{ user.first_name }} {{ user.last_name }}</p>
     </div>
     <div class="user-email">
-        <p style="color:#007bff; margin-left:8px; margin-top:-12px;">Email: {{ user.email }}</p>
+        <p style="color:#007bff; margin-left:8px; margin-top:-15px;">Email: {{ user.email }}</p>
     </div>
-    {% if object.profile.facebook_page %}
+    {% if object.profile.facebook_page and object.profile.instagram_page %}
       <div class="media-body">
-        <a href="{{ object.profile.facebook_page}}" style="margin-left:5px;">Facebook page</a>
+        <a href="{{ object.profile.facebook_page}}" style="margin-left:5px;" class="fa fa-facebook"></a>
+        <a href="{{ object.profile.instagram_page }}" style="margin-left:5px;" class="fa fa-instagram"></a>
       </div>
-    {% endif %}
-    {% if object.profile.instagram_page %}
+    {% else %}
       <div class="media-body">
-        <a href="{{ object.profile.instagram_page }}" style="margin-left:5px;">Instagram page</a>
+        <a href="{{ object.profile.facebook_page}}" style="margin-left:5px;" class="fa fa-facebook"></a>
       </div>
     {% endif %}
     <div class="user-data">
