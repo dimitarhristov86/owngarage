@@ -31,7 +31,7 @@
               <form class="d-flex" method="GET" action="{% url 'search-cars' %}">
                 {% csrf_token %}
                 <input class="form-control me-2" name="query" type="search" placeholder="Search cars by make" aria-label="Search">
-                <button class="btn btn-outline-primary" type="submit" style="background-color:#007bff; color:white;">Search</button>
+                <button class="btn btn-outline-secondary" type="submit" style="background-color:#000; color:white;">Search</button>
               </form>
               <a class="nav-item nav-link" href="{% url 'my-cars' %}">My cars</a>
               <a class="nav-item nav-link" href="{% url 'car-new' %}">Add car</a>

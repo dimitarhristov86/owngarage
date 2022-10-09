@@ -112,10 +112,6 @@ def search_cars(request):
         query = request.GET.get('query')
         if query:
             cars = Car.objects.filter(make__contains=query)
-            return render(request, 'garage/search_cars.html', {'cars': cars})
+            return render(request, 'garage/search_cars.html', {'cars': cars, 'query': query})
         else:
-            print('No results')
-            return render(request, 'garage/search_cars.html', {})
-
-
-
+            return render(request, 'garage/search_cars.html')
