@@ -1,5 +1,9 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: #fafafa;
+  background: #9f9da3;
   color: #000;
   margin-top: 7rem;
   margin-left: 17rem;
