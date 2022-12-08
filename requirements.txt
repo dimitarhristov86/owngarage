@@ -1,4 +1,4 @@
-asgiref==3.5.2
+asgiref==3.4.1
 Django==4.1
 django-crispy-forms==1.14.0
 Pillow==9.2.0
