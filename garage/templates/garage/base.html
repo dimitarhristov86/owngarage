@@ -16,32 +16,35 @@
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <div class="container">
-        <a class="navbar-brand mr-4" href="/">Own Garage</a>
+        <a class="navbar-brand" href="/">Own Garage</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'garage-home' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'garage-contact_us' %}">Contact Us</a>
-          </div>
+        {% if user.is_authenticated %}
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
-            {% if user.is_authenticated %}
               <form class="d-flex" method="GET" action="{% url 'search-cars' %}">
                 {% csrf_token %}
                 <input class="form-control me-2" name="query" type="search" placeholder="Search cars by make" aria-label="Search">
                 <button class="btn btn-outline-secondary" type="submit" style="background-color:#000; color:white;">Search</button>
               </form>
-              <a class="nav-item nav-link" href="{% url 'my-cars' %}">My cars</a>
-              <a class="nav-item nav-link" href="{% url 'car-new' %}">Add car</a>
-              <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
-              <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
-            {% else %}
-              <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
-              <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
-            {% endif %}
-          </div>
+        {% endif %}
+        <div class="dropdown">
+           <button class="dropbtn">Menu</button>
+           <div class="dropdown-content">
+              {% if user.is_authenticated %}
+                <a class="nav-item nav-link" href="{% url 'my-cars' %}">My cars</a>
+                <a class="nav-item nav-link" href="{% url 'car-new' %}">Add car</a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+              {% else %}
+                <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                <a class="nav-item nav-link" href="{% url 'garage-contact_us' %}">Contact Us</a>
+              {% endif %}
+           </div>
+        </div>
+        </div>
         </div>
       </div>
     </nav>
@@ -58,7 +61,6 @@
       </div>
     </div>
 </main>
-
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

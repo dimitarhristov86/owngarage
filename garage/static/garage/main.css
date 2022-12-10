@@ -1,3 +1,46 @@
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4e4f61;
+  color: white;
+  margin-top: 6px;
+  font-size: 18px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4e4f61;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #9f9da3;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #9f9da3;}
+
 * {
   box-sizing: border-box;
 }
@@ -22,9 +65,14 @@ ul {
 
 }
 
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+}
 
 .content-section {
-  background: #ffffff;
+  background: #9f9da3;
   padding: 10px 20px;
   border: 1px solid #dddddd;
   border-radius: 3px;
@@ -36,19 +84,12 @@ a.text {
   font-size: 15px;
 }
 
-
 table, th, td {
   border:1px solid black;
 }
 
 th {
     background-color: #4e4f61;
-}
-
-.container {
-  position: relative;
-  text-align: center;
-  color: black;
 }
 
 /* Bottom left text */
@@ -60,7 +101,7 @@ th {
 
 .img-area{
     width:800px;
-    height:500px;
+    height:400px;
     background: url(media/garage.png);
     animation: animate 20s infinite ease-in-out;
     -webkit-background-size:cover;
